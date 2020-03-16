@@ -25,7 +25,6 @@ install:
     - flysystem_gcs
     - hook_event_dispatcher
     - link
-    - mailsystem
     - media
     - media_library
     - menu_link_content

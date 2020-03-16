@@ -2,8 +2,6 @@
 
 namespace DieterHolvoet\DrupalInstall\Console\Command;
 
-use Composer\Composer;
-use Composer\Installer;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Input\InputArgument;
@@ -48,13 +46,28 @@ class CreateCommand extends Command
         }
 
         $this->command('check-composer-version');
-        $this->output->success('Composer is up to date.');
 
         $this->output->section('Copying scaffold files...');
         $this->command('scaffold', ['destination' => $destination]);
 
         $this->output->section('Installing dependencies...');
         exec("cd $destination; composer install");
+
+        $this->output->section('Creating settings.php & services.yml');
+        $this->filesystem->copy(
+            $destination . '/public/sites/default/default.settings.php',
+            $destination . '/public/sites/default/settings.php'
+        );
+        $this->filesystem->copy(
+            $destination . '/public/sites/default/default.services.yml',
+            $destination . '/public/sites/default/services.yml'
+        );
+
+        $this->output->success('Scaffolding done! Want to know what\'s next?');
+        $this->output->listing([
+            'Add database credentials to .env',
+            'Run the following command to install your site: drush site-install basic'
+        ]);
     }
 
     protected function command(string $name, array $arguments = [])

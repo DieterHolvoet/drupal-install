@@ -1,0 +1,5 @@
+parameters:
+    wmcontroller.settings:
+        module: 'site_module'
+        path: 'templates'
+        theme: 'site_theme'
