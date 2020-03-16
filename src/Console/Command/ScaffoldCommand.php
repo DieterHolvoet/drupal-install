@@ -1,12 +1,11 @@
 <?php
 
-namespace Wieni\wmcodestyle\Console\Command;
+namespace DieterHolvoet\DrupalInstall\Console\Command;
 
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Style\SymfonyStyle;
-use Symfony\Component\Filesystem\Exception\IOException;
 use Symfony\Component\Filesystem\Filesystem;
 
 class ScaffoldCommand extends Command
@@ -26,54 +25,16 @@ class ScaffoldCommand extends Command
     {
         $this
             ->setName(self::COMMAND_NAME)
-            ->setDescription('Sync files to the root of the project requiring this package.');
+            ->setDescription('Sync files to the root of the project requiring this package.')
+            ->addArgument('destination', InputArgument::REQUIRED, 'The directory to sync the files to.');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $io = new SymfonyStyle($input, $output);
-
         $packageRoot = __DIR__ . '/../../..';
         $filesRoot = $packageRoot . '/files';
-        $projectRoot = $this->getComposerRoot();
+        $destination = $input->getArgument('destination');
 
-        foreach (glob("$filesRoot/*") as $source) {
-            $fileName = pathinfo($source, PATHINFO_FILENAME);
-            $destination = implode(DIRECTORY_SEPARATOR, [$projectRoot, $fileName]);
-
-            if (file_exists($destination)) {
-                if ($io->confirm("The file {$fileName} already exists at {$projectRoot}. Overwrite?")) {
-                    unlink($destination);
-                } else {
-                    return;
-                }
-            }
-
-            try {
-                $this->filesystem->copy($source, $destination, true);
-            } catch (IOException $e) {
-                $io->error($e->getMessage());
-                return;
-            }
-        }
-    }
-
-    protected function getComposerRoot(): ?string
-    {
-        $composerRoot = null;
-        $dir = __DIR__;
-
-        do {
-            if (
-                file_exists($dir . '/composer.json')
-                && dirname($dir) !== 'drupal-install'
-            ) {
-                $composerRoot = $dir;
-            }
-
-            $dir = realpath($dir . '/..');
-        } while ($dir !== '/');
-
-        return $composerRoot;
+        $this->filesystem->mirror($filesRoot, $destination);
     }
 }

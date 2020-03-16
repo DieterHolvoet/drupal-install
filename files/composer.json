@@ -146,14 +146,8 @@
         "pre-install-cmd": [
             "drupal-install check-composer-version"
         ],
-        "post-install-cmd": [
-            "drupal-install scaffold"
-        ],
         "pre-update-cmd": [
             "drupal-install check-composer-version"
-        ],
-        "post-update-cmd": [
-            "drupal-install scaffold"
         ]
     }
 }

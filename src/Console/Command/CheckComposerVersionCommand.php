@@ -1,6 +1,6 @@
 <?php
 
-namespace Wieni\wmcodestyle\Console\Command;
+namespace DieterHolvoet\DrupalInstall\Console\Command;
 
 use Composer\Composer;
 use Composer\Semver\Comparator;
