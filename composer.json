@@ -27,6 +27,9 @@
             "DieterHolvoet\\DrupalInstall\\": "src/"
         }
     },
+    "bin": [
+        "drupal-install"
+    ],
     "scripts": {
         "coding-standards": [
             "@composer normalize",
