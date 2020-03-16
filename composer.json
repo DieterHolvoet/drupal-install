@@ -1,7 +1,7 @@
 {
     "name": "dieterholvoet/drupal-install",
     "description": "An advanced Drupal 8 install profile",
-    "type": "project",
+    "type": "library",
     "license": "MIT",
     "authors": [
         {
