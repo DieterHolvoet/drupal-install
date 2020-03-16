@@ -45,7 +45,7 @@
         "ergebnis/composer-normalize": "^2.0",
         "friendsofphp/php-cs-fixer": "^2.15",
         "wieni/wmcodestyle": "^1.0",
-        "wieni/wmscaffold": "^1.10"
+        "wieni/wmscaffold": "dev-release/v1"
     },
     "config": {
         "discard-changes": true,
@@ -99,9 +99,6 @@
             "bower-asset",
             "npm-asset"
         ],
-        "patchLevel": {
-            "drupal/core": "-p2"
-        },
         "patches": {
             "drush/drush": {
                 "Remove field:create placeholder command": "https://raw.githubusercontent.com/wieni/wmscaffold/1.9.10/patches/drush/drush/10.0.0-remove-field-create-legacy-command.patch"
