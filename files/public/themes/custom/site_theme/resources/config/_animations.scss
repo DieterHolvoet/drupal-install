@@ -1,0 +1,26 @@
+$animation-speed--fast: 150ms;
+$animation-speed--default: 300ms;
+$animation-speed--slow: 500ms;
+
+$animation-transition--default: cubic-bezier(0.65, 0, 0.28, 1);
+$animation-transition--strong-in: cubic-bezier(0.75, 0.075, 0.12, 1.1);
+
+@mixin transition($x...) {
+  $result: ();
+  @for $i from 1 through length($x) {
+    $prop: #{nth($x, $i)};
+    $result: append(
+      $result,
+      (#{$prop} $animation-speed--default $animation-transition--default)
+    );
+    @if $i != length($x) {
+      $result: append(
+        $result,
+        unquote(
+          $string: ",",
+        )
+      );
+    }
+  }
+  transition: $result;
+}

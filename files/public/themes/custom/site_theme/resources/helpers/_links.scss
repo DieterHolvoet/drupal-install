@@ -1,0 +1,21 @@
+@import "../config/colors";
+
+@mixin link-with-color($color) {
+  color: $color;
+  font-weight: 400;
+  text-decoration: none;
+
+  background-position: 0 90%;
+  background-repeat: no-repeat;
+  background-size: 100% 1px;
+  background-image: linear-gradient(rgba($color, 0.25), rgba($color, 0.25));
+
+  &:hover,
+  &:focus {
+    background-image: linear-gradient(rgba($color, 0.5), rgba($color, 0.5));
+  }
+}
+
+%link {
+  @include link-with-color($c-primary);
+}

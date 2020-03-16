@@ -1,0 +1,19 @@
+$space-multiplier: 0.5rem;
+
+$space: (
+  xxs: $space-multiplier * 1,
+  xs: $space-multiplier * 2,
+  s: $space-multiplier * 3,
+  m: $space-multiplier * 4,
+  l: $space-multiplier * 6,
+  xl: $space-multiplier * 8,
+  xxl: $space-multiplier * 12,
+);
+
+@function space($space-name) {
+  @if map-has-key($space, $space-name) {
+    @return map-get($space, $space-name);
+  } @else {
+    @error "No spacing #{$space-name} found.";
+  }
+}

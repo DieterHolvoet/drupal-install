@@ -1,0 +1,36 @@
+{
+    "name": "dieterholvoet/drupal-install",
+    "description": "An advanced Drupal 8 install profile",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dieter Holvoet",
+            "email": "dieter.holvoet@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.3",
+        "symfony/console": "^2.8 || ^3 || ^4",
+        "symfony/filesystem": "^3.0 || ^4.0",
+        "composer/composer": "^1.0"
+    },
+    "require-dev": {
+        "ergebnis/composer-normalize": "^2.0",
+        "wieni/wmcodestyle": "^1.0"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "DieterHolvoet\\DrupalInstall\\": "src/"
+        }
+    },
+    "scripts": {
+        "coding-standards": [
+            "@composer normalize",
+            "php-cs-fixer fix --config=.php_cs.php"
+        ]
+    }
+}

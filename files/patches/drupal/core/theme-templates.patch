@@ -1,0 +1,13 @@
+diff --git a/core/themes/engines/twig/twig.engine b/core/themes/engines/twig/twig.engine
+index 791f9083b8..0a2acf6543 100644
+--- a/core/themes/engines/twig/twig.engine
++++ b/core/themes/engines/twig/twig.engine
+@@ -14,7 +14,7 @@
+  */
+ function twig_theme($existing, $type, $theme, $path) {
+   $templates = drupal_find_theme_functions($existing, [$theme]);
+-  $templates += drupal_find_theme_templates($existing, '.html.twig', $path);
++  $templates += site_module_find_theme_templates($existing, '.html.twig', $path);
+   return $templates;
+ }
+ 

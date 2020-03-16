@@ -1,0 +1,52 @@
+@import "../config/colors";
+@import "../config/typography";
+@import "../helpers/breakpoints";
+
+html {
+    font-size: 62.5%; /* Now 10px = 1rem! */
+}
+
+body {
+    font-family: $t-body;
+    font-weight: 300;
+
+    font-size: 16px; /* px fallback */
+    font-size: 1.6rem; /* default font-size for document */
+    line-height: 1.4; /* a nice line-height */
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    color: $c-black;
+}
+
+@for $i from 1 through 6 {
+    h#{$i},
+    .heading-#{$i} {
+        margin: 0;
+
+        font-family: $t-heading;
+        font-size: map-get($t-heading-size, $i + 1);
+        line-height: 1.2;
+        color: $c-primary;
+
+        @if ($i <= 3) {
+            font-weight: 100;
+        } @else {
+            font-weight: 400;
+        }
+
+        @include breakpoint("m") {
+            font-size: map-get($t-heading-size, $i);
+        }
+    }
+}
+
+p {
+    padding: 0;
+    margin: 0;
+}
+
+strong {
+    font-weight: 800;
+}

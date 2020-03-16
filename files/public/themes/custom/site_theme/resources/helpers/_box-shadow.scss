@@ -1,0 +1,7 @@
+@import "../config/colors";
+
+$default-box-shadow-size: 4px;
+$default-box-shadow-opacity: 0.35;
+
+$default-box-shadow: 0 0 0 $default-box-shadow-size
+  rgba($c-primary, $default-box-shadow-opacity);

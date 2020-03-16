@@ -1,0 +1,10 @@
+@import "../helpers/links";
+
+a {
+  color: currentColor;
+  text-decoration: none;
+
+  &:not([class]) {
+    @extend %link;
+  }
+}

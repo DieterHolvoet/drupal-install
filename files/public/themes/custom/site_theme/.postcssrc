@@ -1,0 +1,9 @@
+{
+  "plugins": {
+    "autoprefixer": {},
+    "postcss-flexbugs-fixes": {},
+    "rucksack-css": {
+      "fallbacks": true
+    }
+  }
+}

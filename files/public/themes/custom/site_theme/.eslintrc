@@ -1,0 +1,46 @@
+{
+  "extends": [
+    "airbnb",
+    "prettier",
+    "prettier/react",
+    "plugin:jsx-a11y/recommended"
+  ],
+  "plugins": [
+    "react",
+    "prettier",
+    "jsx-a11y",
+    "json",
+    "react-hooks"
+  ],
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "indent": ["error", 4, {"SwitchCase": 1}],
+    "import/extensions": 0,
+    "no-prototype-builtins": 0,
+    "class-methods-use-this": 0,
+    "no-console": 0,
+    "no-underscore-dangle": 0,
+    "react/jsx-indent-props": ["error", 4],
+    "react/jsx-indent": ["error", 4],
+    "react/jsx-filename-extension": 0,
+    "import/no-extraneous-dependencies": 0,
+    "import/no-unresolved": 0,
+    "no-plusplus": 0,
+    "no-cond-assign": 0,
+    "wrap-iife": 0,
+    "no-floating-decimal": 0,
+    "no-new": 0,
+    "quote-props": 0,
+    "no-param-reassign": 0,
+    "react/no-unused-prop-types": 0,
+    "linebreak-style": 0,
+    "jsx-a11y/href-no-hash": 0,
+    "prettier/prettier": "error",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
+  }
+}

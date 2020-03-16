@@ -1,0 +1,33 @@
+$breakpoints: (
+  "s": 426,
+  "m": 768,
+  "l": 1040,
+  "xl": 1440,
+  "xxl": 1650,
+);
+
+@mixin breakpoint($breakpoint-name, $type: "min-width") {
+  @if map-has-key($breakpoints, $breakpoint-name) {
+    $breakpoint: map-get($breakpoints, $breakpoint-name);
+
+    @if ($type == "max-width") {
+      @media (max-width: #{$breakpoint - 1}px) {
+        @content;
+      }
+    } @else if ($type == "min-width") {
+      @media (min-width: #{$breakpoint}px) {
+        @content;
+      }
+    } @else {
+      @error "🤦🏻‍♂️ Use 'min-width' or 'max-width, not #{$type}.";
+    }
+  } @else {
+    @error "🤦🏻‍♂️ No breakpoint #{$breakpoint-name} found.";
+  }
+}
+
+@mixin i-hate-ie11() {
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    @content;
+  }
+}

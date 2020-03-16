@@ -1,0 +1,30 @@
+name: Site theme
+type: theme
+description: 'The frontend theme for this project.'
+package: Custom
+version: 1.0
+core: 8.x
+
+# Add more libraries in site_theme.libraries.yml. The libraries added here are included ON ALL PAGES.
+libraries:
+    - site_theme/global-styling
+
+# Remove some of the default Drupal libraries, that include some style we don't need.
+libraries-override:
+    system/base: false
+    core/html5shiv: false
+
+regions:
+    # This is the default region where all blocks/content are rendered.
+    content: Content
+    # Place messages and/or admin tabs here.
+    admin_tools: 'Admin tools'
+
+# Makes it possible to include components using {% include "@component-library-name/component/card.html.twig %}
+component-libraries:
+    site-theme:
+        paths:
+            - templates
+    components:
+        paths:
+            - resources/components

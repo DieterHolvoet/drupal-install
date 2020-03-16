@@ -1,0 +1,24 @@
+input,
+textarea,
+select {
+  font-size: inherit;
+  font-family: inherit;
+}
+
+select {
+  appearance: none;
+}
+
+legend {
+  @extend .heading-3;
+  padding: 0 space("xs");
+}
+
+fieldset {
+  fieldset {
+    legend {
+      @extend .heading-4;
+      padding: 0;
+    }
+  }
+}
