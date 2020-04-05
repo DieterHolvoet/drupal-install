@@ -1,0 +1,4 @@
+services:
+    site_module.commands.fresh:
+        class: Drupal\site_module\Commands\FreshCommands
+        tags: [{ name: drush.command }]
