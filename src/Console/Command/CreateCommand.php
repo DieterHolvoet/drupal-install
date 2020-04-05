@@ -54,14 +54,19 @@ class CreateCommand extends Command
         exec("cd $destination; composer install");
 
         $this->output->section('Creating settings.php & services.yml');
-        $this->filesystem->copy(
-            $destination . '/public/sites/default/default.settings.php',
-            $destination . '/public/sites/default/settings.php'
-        );
-        $this->filesystem->copy(
-            $destination . '/public/sites/default/default.services.yml',
-            $destination . '/public/sites/default/services.yml'
-        );
+        if (!$this->filesystem->exists($destination . '/public/sites/default/settings.php')) {
+            $this->filesystem->copy(
+                $destination . '/public/sites/default/default.settings.php',
+                $destination . '/public/sites/default/settings.php'
+            );
+        }
+
+        if (!$this->filesystem->exists($destination . '/public/sites/default/services.yml')) {
+            $this->filesystem->copy(
+                $destination . '/public/sites/default/default.services.yml',
+                $destination . '/public/sites/default/services.yml'
+            );
+        }
 
         $this->output->success('Scaffolding done! Want to know what\'s next?');
         $this->output->listing([
